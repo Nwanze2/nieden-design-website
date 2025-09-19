@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIEDEN DESIGN - Elevate Your Brand</title>
+    <!-- SEO Meta Tags for Search Engines -->
+    <meta name="description" content="NIEDEN DESIGN specializes in creative design solutions, including graphic design, social media content, and branding. We help elevate your brand with stunning visuals.">
+    <meta name="keywords" content="Nieden Design, graphic design, branding, logo design, social media design, web design, creative agency, Nigeria design, freelance designer">
+    <meta name="author" content="NIEDEN DESIGN">
+    <meta property="og:title" content="NIEDEN DESIGN - Creative Solutions for Your Brand">
+    <meta property="og:description" content="Elevate your brand with us. We offer professional design services to help your business stand out.">
+    <meta property="og:image" content="https://www.yourwebsite.com/1000478630.jpg">
+    <meta property="og:url" content="https://www.yourwebsite.com/">
+
+    <!-- Use the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the dark theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1A202C; /* Dark background */
+            color: #F7FAFC; /* Light text color */
+        }
+        
+        /* The hero background with a stronger dark overlay */
+        .hero-bg {
+            background-image: linear-gradient(rgba(26, 32, 44, 0.8), rgba(26, 32, 44, 0.8)), url('1000478630.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Custom scrollbar for a nicer look in dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #2D3748;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #4FD1C5; /* Vibrant accent color */
+            border-radius: 4px;
+        }
+
+        /* Enhanced CSS for animations and transitions */
+        .feature-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-image-wrapper:hover .gallery-image {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+        
+        .gallery-image {
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .cta-button {
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(79, 209, 197, 0.4);
+        }
+        
+        /* New CSS for the 3D cube animation */
+        .animation-container {
+            width: 100%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 800px;
+        }
+
+        .cube {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-30deg) rotateY(30deg);
+            animation: cubeRotate 12s infinite linear;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.8;
+            border: 2px solid #4FD1C5; /* Teal border for a glow effect */
+            background: rgba(79, 209, 197, 0.2); /* Semi-transparent background */
+        }
+
+        .cube-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .front { transform: rotateY(0deg) translateZ(100px); }
+        .back { transform: rotateY(180deg) translateZ(100px); }
+        .right { transform: rotateY(90deg) translateZ(100px); }
+        .left { transform: rotateY(-90deg) translateZ(100px); }
+        .top { transform: rotateX(90deg) translateZ(100px); }
+        .bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+        @keyframes cubeRotate {
+            from { transform: rotateX(0deg) rotateY(0deg); }
+            to { transform: rotateX(360deg) rotateY(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900 shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">NIEDEN DESIGN</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#hero" class="text-gray-300 hover:text-white transition-colors duration-300">Home</a>
+                <a href="#animation" class="text-gray-300 hover:text-white transition-colors duration-300">Animation</a>
+                <a href="#features" class="text-gray-300 hover:text-white transition-colors duration-300">Features</a>
+                <a href="#testimonials" class="text-gray-300 hover:text-white transition-colors duration-300">Testimonials</a>
+                <a href="#gallery" class="text-gray-300 hover:text-white transition-colors duration-300">Gallery</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 shadow-md">
+            <a href="#hero" class="block py-2 px-6 text-gray-300 hover:bg-gray-800 transition-colors duration-300">Home</a>
+            <a href="#animation" class="block py-2 px-6 text-gray-300 hover:bg-gray-800 transition-colors duration-300">Animation</a>
+            <a href="#features" class="block py-2 px-6 text-gray-300 hover:bg-gray-800 transition-colors duration-300">Features</a>
+            <a href="#testimonials" class="block py-2 px-6 text-gray-300 hover:bg-gray-800 transition-colors duration-300">Testimonials</a>
+            <a href="#gallery" class="block py-2 px-6 text-gray-300 hover:bg-gray-800 transition-colors duration-300">Gallery</a>
+            <a href="#contact" class="block py-2 px-6 text-gray-300 hover:bg-gray-800 transition-colors duration-300">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-bg text-white py-24 md:py-48 flex items-center justify-center text-center">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">NIEDEN DESIGN</h1>
+                <p class="text-xl md:text-2xl mb-8 font-light">Elevate your brand with us.</p>
+                <a href="#features" class="cta-button bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg">Learn More</a>
+            </div>
+        </section>
+
+        <!-- New Animation Section -->
+        <section id="animation" class="py-16 bg-gray-900 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">A Glimpse of Our Creativity</h2>
+            <p class="text-gray-400 text-lg mb-12">Visuals that bring your brand to life.</p>
+            <div class="animation-container">
+                <div class="cube">
+                    <div class="cube-face front">
+                        <img src="1000478630.jpg" alt="Cube Face" class="cube-image">
+                    </div>
+                    <div class="cube-face back">
+                        <img src="1000478630.jpg" alt="Cube Face" class="cube-image">
+                    </div>
+                    <div class="cube-face right">
+                        <img src="1000478630.jpg" alt="Cube Face" class="cube-image">
+                    </div>
+                    <div class="cube-face left">
+                        <img src="1000478630.jpg" alt="Cube Face" class="cube-image">
+                    </div>
+                    <div class="cube-face top">
+                        <img src="1000478630.jpg" alt="Cube Face" class="cube-image">
+                    </div>
+                    <div class="cube-face bottom">
+                        <img src="1000478630.jpg" alt="Cube Face" class="cube-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-16 bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Key Features</h2>
+                <p class="text-gray-400 text-lg mb-12">Designed to make your life easier and more efficient.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature Card 1 -->
+                    <div class="feature-card bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 transition-transform transform hover:scale-105 duration-300">
+                        <div class="text-teal-400 mb-4 inline-block p-3 bg-gray-700 rounded-full">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-white">Blazing Fast</h3>
+                        <p class="text-gray-400">Experience unparalleled speed and performance. We've optimized every detail for you.</p>
+                    </div>
+                    <!-- Feature Card 2 -->
+                    <div class="feature-card bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 transition-transform transform hover:scale-105 duration-300">
+                        <div class="text-teal-400 mb-4 inline-block p-3 bg-gray-700 rounded-full">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-white">Fully Reliable</h3>
+                        <p class="text-gray-400">Our service is built on a foundation of reliability and trust, ensuring consistent availability.</p>
+                    </div>
+                    <!-- Feature Card 3 -->
+                    <div class="feature-card bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 transition-transform transform hover:scale-105 duration-300">
+                        <div class="text-teal-400 mb-4 inline-block p-3 bg-gray-700 rounded-full">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2 text-white">24/7 Support</h3>
+                        <p class="text-gray-400">Our dedicated support team is available around the clock to assist you with any questions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-16 bg-gray-800">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
+                <p class="text-gray-400 text-lg mb-12">Hear from those who've experienced our commitment to excellence.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <div class="bg-gray-900 p-6 rounded-xl shadow-md border border-gray-700">
+                        <p class="text-lg italic text-gray-300 mb-4">"The service was outstanding from start to finish. It completely exceeded my expectations and made a huge difference to my project."</p>
+                        <div class="flex items-center justify-center">
+                            <div class="ml-4 text-left">
+                                <p class="font-semibold text-white">Jane Doe</p>
+                                <p class="text-sm text-gray-400">CEO, Tech Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 2 -->
+                    <div class="bg-gray-900 p-6 rounded-xl shadow-md border border-gray-700">
+                        <p class="text-lg italic text-gray-300 mb-4">"I've never worked with a team that was so responsive and helpful. The quality of work is top-notch and I highly recommend them."</p>
+                        <div class="flex items-center justify-center">
+                            <div class="ml-4 text-left">
+                                <p class="font-semibold text-white">John Smith</p>
+                                <p class="text-sm text-gray-400">Lead Developer, Innovate Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Card 3 -->
+                    <div class="bg-gray-900 p-6 rounded-xl shadow-md border border-gray-700">
+                        <p class="text-lg italic text-gray-300 mb-4">"A seamless experience from start to finish. The team understood our needs and delivered a perfect solution on time and on budget."</p>
+                        <div class="flex items-center justify-center">
+                            <div class="ml-4 text-left">
+                                <p class="font-semibold text-white">Emily White</p>
+                                <p class="text-sm text-gray-400">Founder, Global Ventures</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Gallery Section -->
+        <section id="gallery" class="py-16 bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Gallery</h2>
+                <p class="text-gray-400 text-lg mb-12">A glimpse into what we offer.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Image Card 1 -->
+                    <div class="gallery-image-wrapper rounded-xl overflow-hidden shadow-lg hover:shadow-2xl duration-300">
+                        <img src="1000478630.jpg" alt="A logo for Nieden Design" class="gallery-image w-full h-auto object-cover">
+                    </div>
+                    <!-- Image Card 2 -->
+                    <div class="gallery-image-wrapper rounded-xl overflow-hidden shadow-lg hover:shadow-2xl duration-300">
+                        <img src="1000432766.jpg" alt="A poster for a Christmas Party" class="gallery-image w-full h-auto object-cover">
+                    </div>
+                    <!-- Image Card 3 -->
+                    <div class="gallery-image-wrapper rounded-xl overflow-hidden shadow-lg hover:shadow-2xl duration-300">
+                        <img src="1000698463.jpg" alt="A poster for a Mid-Year Prayer and Fasting event" class="gallery-image w-full h-auto object-cover">
+                    </div>
+                    <!-- Image Card 4 -->
+                    <div class="gallery-image-wrapper rounded-xl overflow-hidden shadow-lg hover:shadow-2xl duration-300">
+                        <img src="1000525241.jpg" alt="A poster for a 2 years anniversary celebration" class="gallery-image w-full h-auto object-cover">
+                    </div>
+                    <!-- Image Card 5 -->
+                    <div class="gallery-image-wrapper rounded-xl overflow-hidden shadow-lg hover:shadow-2xl duration-300">
+                        <img src="1000738516.jpg" alt="A poster for a Church Program" class="gallery-image w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section id="contact" class="py-16 bg-gray-800">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
+                <p class="text-gray-400 text-lg mb-12">Fill out the form below to get in touch with our team.</p>
+
+                <div class="max-w-xl mx-auto bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-700">
+                    <!-- The form now uses JavaScript to open WhatsApp with a pre-filled message -->
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-left text-sm font-medium text-gray-300">Name</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-200 focus:ring-opacity-50 px-3 py-2 bg-gray-800 text-white" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-left text-sm font-medium text-gray-300">Email Address</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-200 focus:ring-opacity-50 px-3 py-2 bg-gray-800 text-white" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-left text-sm font-medium text-gray-300">Message</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-200 focus:ring-opacity-50 px-3 py-2 bg-gray-800 text-white" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-4 rounded-md shadow-lg">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-500">&copy; 2025 NIEDEN DESIGN. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.getElementById('mobile-menu').classList.add('hidden');
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // WhatsApp form submission handler
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Define the WhatsApp number (without the '+')
+            const phoneNumber = '2347039364597';
+            
+            // Format the message content
+            const whatsappMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+            
+            // Construct the WhatsApp URL
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open the URL in a new tab
+            window.open(whatsappUrl, '_blank');
+
+            // Optional: Clear the form after opening WhatsApp
+            this.reset();
+        });
+    </script>
+</body>
+</html>
+
