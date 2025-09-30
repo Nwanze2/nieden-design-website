@@ -20,42 +20,85 @@
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom styles for the dark theme */
+        /* --- HARMONIOUS DARK MODE STYLE --- */
+        
+        /* Define New Color Palette (Blending, Professional Look) */
+        /* Primary Dark: Deep Slate/Charcoal (#1E293B) */
+        /* Secondary Dark: Slightly Lighter Slate for Cards/Sections (#334155) */
+        /* Tertiary Border/Accent Bg: Muted Gray (#475569) */
+        /* Accent: Muted Teal/Cyan (#0891B2) - Professional Pop */
+        /* Text: Light Gray (#F1F5F9) */
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1A202C; /* Dark background */
-            color: #F7FAFC; /* Light text color */
+            background-color: #1E293B; /* Deep Slate background */
+            color: #F1F5F9; /* Light text color */
         }
         
-        /* The hero background with a stronger dark overlay */
-        .hero-bg {
-            background-image: linear-gradient(rgba(26, 32, 44, 0.8), rgba(26, 32, 44, 0.8)), url('1000478630.jpg');
+        /* Navigation & Sections Background Overrides for Harmonious Look */
+        .bg-primary { background-color: #1E293B; } /* Primary/Hero/Header */
+        .bg-secondary { background-color: #334155; } /* Services/Contact/Cards */
+        .bg-tertiary { background-color: #475569; } /* Inner elements/borders */
+        
+        /* ----------------------------------
+        GLASS MORPHISM HERO BACKGROUND 
+        ----------------------------------
+        The hero container now holds the background image.
+        */
+        .hero-container {
+            /* Using the uploaded image: 1000774081.jpg */
+            background-image: url('1000478630.jpg'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            color: #F1F5F9; 
+            position: relative; /* Needed for absolute overlay */
+            overflow: hidden; /* Ensures the blur doesn't bleed out */
         }
 
-        /* Custom scrollbar for a nicer look in dark mode */
+        /* The Glass Effect Overlay */
+        .hero-glass-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Semi-transparent dark background */
+            background-color: rgba(30, 41, 59, 0.7); 
+            /* The Glassmorphism effect */
+            backdrop-filter: blur(8px) brightness(0.8);
+            -webkit-backdrop-filter: blur(8px) brightness(0.8); /* Safari compatibility */
+        }
+        
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #2D3748;
+            background: #334155;
         }
 
         ::-webkit-scrollbar-thumb {
-            background-color: #4FD1C5; /* Vibrant accent color */
+            background-color: #0891B2; /* Muted Teal Accent */
             border-radius: 4px;
         }
 
         /* Enhanced CSS for animations and transitions */
+        .feature-card {
+            background-color: #334155; /* Secondary Dark */
+            border-color: #475569;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
         .feature-card:hover {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
         }
 
         .gallery-image-wrapper:hover .gallery-image {
-            transform: scale(1.1);
+            transform: scale(1.05);
             filter: brightness(1.1);
         }
         
@@ -63,16 +106,22 @@
             transition: transform 0.5s ease, filter 0.5s ease;
         }
 
+        /* CTA Button Styling */
         .cta-button {
+            background-color: #0891B2; /* Muted Teal Accent */
+            color: #F1F5F9; /* Light text on teal button */
+            font-weight: 700;
             transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            text-shadow: none;
         }
 
         .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 15px rgba(79, 209, 197, 0.4);
+            background-color: #164E63; /* Darker teal on hover */
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(8, 145, 178, 0.5); /* Subtle teal glow shadow */
         }
         
-        /* New CSS for the 3D cube animation */
+        /* 3D Cube Animation Styling */
         .animation-container {
             width: 100%;
             height: 400px;
@@ -83,7 +132,7 @@
         }
 
         .cube {
-            width: 200px;
+            width: 200px; 
             height: 200px;
             position: relative;
             transform-style: preserve-3d;
@@ -98,9 +147,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            opacity: 0.8;
-            border: 2px solid #4FD1C5; /* Teal border for a glow effect */
-            background: rgba(79, 209, 197, 0.2); /* Semi-transparent background */
+            opacity: 0.9;
+            border: 3px solid #0891B2; /* Muted Teal border */
+            background: rgba(8, 145, 178, 0.15); /* Semi-transparent teal background */
         }
 
         .cube-image {
@@ -120,151 +169,233 @@
             from { transform: rotateX(0deg) rotateY(0deg); }
             to { transform: rotateX(360deg) rotateY(360deg); }
         }
+        
+        /* Service Card Specific Style */
+        .service-card {
+            background-color: #334155;
+            border: 1px solid #475569;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .service-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            border-color: #0891B2; /* Teal border glow */
+        }
+
+        /* Testimonial Card Styling */
+        .testimonial-card {
+            background-color: #334155; 
+            border: 1px solid #475569;
+            color: #94A3B8; /* Secondary light gray text for quotes */
+        }
+        
     </style>
 </head>
 <body>
 
     <!-- Header & Navigation -->
-    <header class="bg-gray-900 shadow-lg sticky top-0 z-50">
+    <header class="bg-primary shadow-lg sticky top-0 z-50 border-b border-tertiary">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white">NIEDEN DESIGN</a>
+            <a href="#" class="text-2xl font-bold text-F1F5F9">NIEDEN DESIGN</a>
             <div class="hidden md:flex space-x-6">
-                <a href="#hero" class="text-gray-300 hover:text-white transition-colors duration-300">Home</a>
-                <a href="#animation" class="text-gray-300 hover:text-white transition-colors duration-300">Animation</a>
-                <a href="#features" class="text-gray-300 hover:text-white transition-colors duration-300">Features</a>
-                <a href="#testimonials" class="text-gray-300 hover:text-white transition-colors duration-300">Testimonials</a>
-                <a href="#gallery" class="text-gray-300 hover:text-white transition-colors duration-300">Gallery</a>
-                <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
+                <!-- Navigation text uses secondary gray and teal hover -->
+                <a href="#hero" class="text-slate-400 hover:text-[#0891B2] transition-colors duration-300">Home</a>
+                <a href="#animation" class="text-slate-400 hover:text-[#0891B2] transition-colors duration-300">Animation</a>
+                <a href="#features" class="text-slate-400 hover:text-[#0891B2] transition-colors duration-300">Features</a>
+                <a href="#services" class="text-slate-400 hover:text-[#0891B2] transition-colors duration-300">Services</a>
+                <a href="#testimonials" class="text-slate-400 hover:text-[#0891B2] transition-colors duration-300">Testimonials</a>
+                <a href="#gallery" class="text-slate-400 hover:text-[#0891B2] transition-colors duration-300">Gallery</a>
+                <a href="#contact" class="text-slate-400 hover:text-[#0891B2] transition-colors duration-300">Contact</a>
             </div>
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+            <button id="mobile-menu-button" class="md:hidden text-slate-400 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
         </nav>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 shadow-md">
-            <a href="#hero" class="block py-2 px-6 text-gray-300 hover:bg-gray-800 transition-colors duration-300">Home</a>
-            <a href="#animation" class="block py-2 px-6 text-gray-300 hover:bg-gray-800 transition-colors duration-300">Animation</a>
-            <a href="#features" class="block py-2 px-6 text-gray-300 hover:bg-gray-800 transition-colors duration-300">Features</a>
-            <a href="#testimonials" class="block py-2 px-6 text-gray-300 hover:bg-gray-800 transition-colors duration-300">Testimonials</a>
-            <a href="#gallery" class="block py-2 px-6 text-gray-300 hover:bg-gray-800 transition-colors duration-300">Gallery</a>
-            <a href="#contact" class="block py-2 px-6 text-gray-300 hover:bg-gray-800 transition-colors duration-300">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-primary shadow-md">
+            <!-- Mobile links use the secondary dark color on hover -->
+            <a href="#hero" class="block py-2 px-6 text-slate-400 hover:bg-secondary transition-colors duration-300">Home</a>
+            <a href="#animation" class="block py-2 px-6 text-slate-400 hover:bg-secondary transition-colors duration-300">Animation</a>
+            <a href="#features" class="block py-2 px-6 text-slate-400 hover:bg-secondary transition-colors duration-300">Features</a>
+            <a href="#services" class="block py-2 px-6 text-slate-400 hover:bg-secondary transition-colors duration-300">Services</a>
+            <a href="#testimonials" class="block py-2 px-6 text-slate-400 hover:bg-secondary transition-colors duration-300">Testimonials</a>
+            <a href="#gallery" class="block py-2 px-6 text-slate-400 hover:bg-secondary transition-colors duration-300">Gallery</a>
+            <a href="#contact" class="block py-2 px-6 text-slate-400 hover:bg-secondary transition-colors duration-300">Contact</a>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero" class="hero-bg text-white py-24 md:py-48 flex items-center justify-center text-center">
-            <div class="container mx-auto px-6">
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">NIEDEN DESIGN</h1>
-                <p class="text-xl md:text-2xl mb-8 font-light">Elevate your brand with us.</p>
-                <a href="#features" class="cta-button bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg">Learn More</a>
-            </div>
-        </section>
+    <!-- Hero Section with Glassmorphism Effect -->
+    <section id="hero" class="hero-container py-24 md:py-48 flex items-center justify-center text-center">
+        <!-- Glass Overlay -->
+        <div class="hero-glass-overlay"></div>
+        
+        <!-- Content Wrapper to ensure text is above the glass layer -->
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-white">NIEDEN DESIGN</h1>
+            <p class="text-xl md:text-2xl mb-8 font-light text-slate-200">Elevate your brand with us.</p>
+            <a href="#services" class="cta-button font-semibold py-3 px-8 rounded-full shadow-lg">View Our Services</a>
+        </div>
+    </section>
 
+    <main>
         <!-- New Animation Section -->
-        <section id="animation" class="py-16 bg-gray-900 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">A Glimpse of Our Creativity</h2>
-            <p class="text-gray-400 text-lg mb-12">Visuals that bring your brand to life.</p>
+        <section id="animation" class="py-16 bg-primary text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-F1F5F9">A Glimpse of Our Creativity</h2>
+            <p class="text-slate-400 text-lg mb-12">Visuals that bring your brand to life.</p>
             <div class="animation-container">
                 <div class="cube">
                     <div class="cube-face front">
-                        <img src="1000478630.jpg" alt="Cube Face" class="cube-image">
+                        <!-- Placeholder color updated to blend with dark/teal -->
+                        <img src="1000478630.jpg" onerror="this.onerror=null;this.src='https://placehold.co/200x200/334155/0891B2?text=Design+1'" alt="Cube Face" class="cube-image">
                     </div>
                     <div class="cube-face back">
-                        <img src="1000478630.jpg" alt="Cube Face" class="cube-image">
+                        <img src="1000478630.jpg" onerror="this.onerror=null;this.src='https://placehold.co/200x200/334155/0891B2?text=Design+2'" alt="Cube Face" class="cube-image">
                     </div>
                     <div class="cube-face right">
-                        <img src="1000478630.jpg" alt="Cube Face" class="cube-image">
+                        <img src="1000478630.jpg" onerror="this.onerror=null;this.src='https://placehold.co/200x200/334155/0891B2?text=Design+3'" alt="Cube Face" class="cube-image">
                     </div>
                     <div class="cube-face left">
-                        <img src="1000478630.jpg" alt="Cube Face" class="cube-image">
+                        <img src="1000478630.jpg" onerror="this.onerror=null;this.src='https://placehold.co/200x200/334155/0891B2?text=Design+4'" alt="Cube Face" class="cube-image">
                     </div>
                     <div class="cube-face top">
-                        <img src="1000478630.jpg" alt="Cube Face" class="cube-image">
+                        <img src="1000478630.jpg" onerror="this.onerror=null;this.src='https://placehold.co/200x200/334155/0891B2?text=Design+5'" alt="Cube Face" class="cube-image">
                     </div>
                     <div class="cube-face bottom">
-                        <img src="1000478630.jpg" alt="Cube Face" class="cube-image">
+                        <img src="1000478630.jpg" onerror="this.onerror=null;this.src='https://placehold.co/200x200/334155/0891B2?text=Design+6'" alt="Cube Face" class="cube-image">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section id="features" class="py-16 bg-gray-900">
+        <!-- Features Section (Quick benefits - kept separate from services list) -->
+        <section id="features" class="py-16 bg-primary">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Key Features</h2>
-                <p class="text-gray-400 text-lg mb-12">Designed to make your life easier and more efficient.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-F1F5F9">Why Choose Us?</h2>
+                <p class="text-slate-400 text-lg mb-12">Designed to make your life easier and more efficient.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Feature Card 1 -->
-                    <div class="feature-card bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 transition-transform transform hover:scale-105 duration-300">
-                        <div class="text-teal-400 mb-4 inline-block p-3 bg-gray-700 rounded-full">
+                    <div class="feature-card p-8 rounded-xl shadow-lg border transition-transform transform hover:scale-105 duration-300">
+                        <div class="text-[#0891B2] mb-4 inline-block p-3 bg-tertiary rounded-full">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-2 text-white">Blazing Fast</h3>
-                        <p class="text-gray-400">Experience unparalleled speed and performance. We've optimized every detail for you.</p>
+                        <h3 class="text-xl font-semibold mb-2 text-F1F5F9">Blazing Fast Turnaround</h3>
+                        <p class="text-slate-400">Efficient project management ensures your visuals are delivered on time, every time.</p>
                     </div>
                     <!-- Feature Card 2 -->
-                    <div class="feature-card bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 transition-transform transform hover:scale-105 duration-300">
-                        <div class="text-teal-400 mb-4 inline-block p-3 bg-gray-700 rounded-full">
+                    <div class="feature-card p-8 rounded-xl shadow-lg border transition-transform transform hover:scale-105 duration-300">
+                        <div class="text-[#0891B2] mb-4 inline-block p-3 bg-tertiary rounded-full">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-2 text-white">Fully Reliable</h3>
-                        <p class="text-gray-400">Our service is built on a foundation of reliability and trust, ensuring consistent availability.</p>
+                        <h3 class="text-xl font-semibold mb-2 text-F1F5F9">Pixel-Perfect Quality</h3>
+                        <p class="text-slate-400">Our service is built on a foundation of reliability and ensuring consistent, high-resolution availability.</p>
                     </div>
                     <!-- Feature Card 3 -->
-                    <div class="feature-card bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 transition-transform transform hover:scale-105 duration-300">
-                        <div class="text-teal-400 mb-4 inline-block p-3 bg-gray-700 rounded-full">
+                    <div class="feature-card p-8 rounded-xl shadow-lg border transition-transform transform hover:scale-105 duration-300">
+                        <div class="text-[#0891B2] mb-4 inline-block p-3 bg-tertiary rounded-full">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-2 text-white">24/7 Support</h3>
-                        <p class="text-gray-400">Our dedicated support team is available around the clock to assist you with any questions.</p>
+                        <h3 class="text-xl font-semibold mb-2 text-F1F5F9">Direct Communication</h3>
+                        <p class="text-slate-400">Work directly with our designers to ensure your vision is perfectly realized from concept to completion.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="py-16 bg-gray-800">
+        <!-- Our Core Services Section (The list of what's offered) -->
+        <section id="services" class="py-16 bg-secondary">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-                <p class="text-gray-400 text-lg mb-12">Hear from those who've experienced our commitment to excellence.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-F1F5F9">Our Core Services</h2>
+                <p class="text-slate-400 text-lg mb-12">A complete list of the professional design services we offer to build your brand.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Service Card 1: Branding -->
+                    <div class="service-card p-6 rounded-xl shadow-2xl flex flex-col items-center text-center">
+                        <div class="text-[#0891B2] mb-4 inline-block p-4 bg-tertiary rounded-full">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-1.282-8.455-3.245m16.91 0c.241-.447.385-.94.444-1.455h-2.92a2.5 2.5 0 00-2.5-2.5H8.75a2.5 2.5 0 00-2.5 2.5H4.085c.059.515.203 1.008.444 1.455M16 4a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-F1F5F9 mb-2">Logo & Branding</h3>
+                        <p class="text-slate-400">Conceptualizing unique logos, visual identities, and comprehensive brand style guides.</p>
+                    </div>
+
+                    <!-- Service Card 2: Social Media -->
+                    <div class="service-card p-6 rounded-xl shadow-2xl flex flex-col items-center text-center">
+                        <div class="text-[#0891B2] mb-4 inline-block p-4 bg-tertiary rounded-full">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.982 18.725A7.488 7.488 0 0012 15a7.488 7.488 0 00-5.982 3.725M15 10a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-F1F5F9 mb-2">Social Media Content</h3>
+                        <p class="text-slate-400">Design of engaging posts, stories, banners, and template creation for all platforms.</p>
+                    </div>
+
+                    <!-- Service Card 3: Print/Marketing -->
+                    <div class="service-card p-6 rounded-xl shadow-2xl flex flex-col items-center text-center">
+                        <div class="text-[#0891B2] mb-4 inline-block p-4 bg-tertiary rounded-full">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-F1F5F9 mb-2">Print & Marketing Design</h3>
+                        <p class="text-slate-400">Professional design for flyers, brochures, business cards, presentations, and large-format printing.</p>
+                    </div>
+                    
+                    <!-- Service Card 4: Web/UX -->
+                    <div class="service-card p-6 rounded-xl shadow-2xl flex flex-col items-center text-center">
+                        <div class="text-[#0891B2] mb-4 inline-block p-4 bg-tertiary rounded-full">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1v-3.25m-7-1.5l2 2m-2 0h-4a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2h-4.25m-2.25-2L14 10l-2-2m0 0l-2 2"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-F1F5F9 mb-2">Web & UX Mockups</h3>
+                        <p class="text-slate-400">Creating high-fidelity UI/UX mockups and design assets for websites and mobile applications.</p>
+                    </div>
+
+                </div>
+                <div class="mt-12">
+                    <a href="#contact" class="cta-button font-semibold py-3 px-8 rounded-full shadow-lg">Request a Quote</a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-16 bg-primary">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-F1F5F9">What Our Clients Say</h2>
+                <p class="text-slate-400 text-lg mb-12">Hear from those who've experienced our commitment to excellence.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Testimonial Card 1 -->
-                    <div class="bg-gray-900 p-6 rounded-xl shadow-md border border-gray-700">
-                        <p class="text-lg italic text-gray-300 mb-4">"The service was outstanding from start to finish. It completely exceeded my expectations and made a huge difference to my project."</p>
+                    <div class="testimonial-card p-6 rounded-xl shadow-md border">
+                        <p class="text-lg italic text-slate-400 mb-4">"The service was outstanding from start to finish. It completely exceeded my expectations and made a huge difference to my project."</p>
                         <div class="flex items-center justify-center">
                             <div class="ml-4 text-left">
-                                <p class="font-semibold text-white">Jane Doe</p>
-                                <p class="text-sm text-gray-400">CEO, Tech Solutions</p>
+                                <p class="font-semibold text-F1F5F9">Jane Doe</p>
+                                <p class="text-sm text-slate-500">CEO, Tech Solutions</p>
                             </div>
                         </div>
                     </div>
                     <!-- Testimonial Card 2 -->
-                    <div class="bg-gray-900 p-6 rounded-xl shadow-md border border-gray-700">
-                        <p class="text-lg italic text-gray-300 mb-4">"I've never worked with a team that was so responsive and helpful. The quality of work is top-notch and I highly recommend them."</p>
+                    <div class="testimonial-card p-6 rounded-xl shadow-md border">
+                        <p class="text-lg italic text-slate-400 mb-4">"I've never worked with a team that was so responsive and helpful. The quality of work is top-notch and I highly recommend them."</p>
                         <div class="flex items-center justify-center">
                             <div class="ml-4 text-left">
-                                <p class="font-semibold text-white">John Smith</p>
-                                <p class="text-sm text-gray-400">Lead Developer, Innovate Inc.</p>
+                                <p class="font-semibold text-F1F5F9">John Smith</p>
+                            <p class="text-sm text-slate-500">Lead Developer, Innovate Inc.</p>
                             </div>
                         </div>
                     </div>
                     <!-- Testimonial Card 3 -->
-                    <div class="bg-gray-900 p-6 rounded-xl shadow-md border border-gray-700">
-                        <p class="text-lg italic text-gray-300 mb-4">"A seamless experience from start to finish. The team understood our needs and delivered a perfect solution on time and on budget."</p>
+                    <div class="testimonial-card p-6 rounded-xl shadow-md border">
+                        <p class="text-lg italic text-slate-400 mb-4">"A seamless experience from start to finish. The team understood our needs and delivered a perfect solution on time and on budget."</p>
                         <div class="flex items-center justify-center">
                             <div class="ml-4 text-left">
-                                <p class="font-semibold text-white">Emily White</p>
-                                <p class="text-sm text-gray-400">Founder, Global Ventures</p>
+                                <p class="font-semibold text-F1F5F9">Emily White</p>
+                                <p class="text-sm text-slate-500">Founder, Global Ventures</p>
                             </div>
                         </div>
                     </div>
@@ -273,57 +404,57 @@
         </section>
 
         <!-- Image Gallery Section -->
-        <section id="gallery" class="py-16 bg-gray-900">
+        <section id="gallery" class="py-16 bg-primary">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Gallery</h2>
-                <p class="text-gray-400 text-lg mb-12">A glimpse into what we offer.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-F1F5F9">Our Gallery</h2>
+                <p class="text-slate-400 text-lg mb-12">A glimpse into what we offer.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Image Card 1 -->
                     <div class="gallery-image-wrapper rounded-xl overflow-hidden shadow-lg hover:shadow-2xl duration-300">
-                        <img src="1000478630.jpg" alt="A logo for Nieden Design" class="gallery-image w-full h-auto object-cover">
+                        <img src="1000478630.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1E293B/0891B2?text=Branding+Design'" alt="A logo for Nieden Design" class="gallery-image w-full h-auto object-cover">
                     </div>
                     <!-- Image Card 2 -->
                     <div class="gallery-image-wrapper rounded-xl overflow-hidden shadow-lg hover:shadow-2xl duration-300">
-                        <img src="1000432766.jpg" alt="A poster for a Christmas Party" class="gallery-image w-full h-auto object-cover">
+                        <img src="1000432766.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1E293B/0891B2?text=Event+Poster'" alt="A poster for a Christmas Party" class="gallery-image w-full h-auto object-cover">
                     </div>
                     <!-- Image Card 3 -->
                     <div class="gallery-image-wrapper rounded-xl overflow-hidden shadow-lg hover:shadow-2xl duration-300">
-                        <img src="1000698463.jpg" alt="A poster for a Mid-Year Prayer and Fasting event" class="gallery-image w-full h-auto object-cover">
+                        <img src="1000698463.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1E293B/0891B2?text=Social+Media+Art'" alt="A poster for a Mid-Year Prayer and Fasting event" class="gallery-image w-full h-auto object-cover">
                     </div>
                     <!-- Image Card 4 -->
                     <div class="gallery-image-wrapper rounded-xl overflow-hidden shadow-lg hover:shadow-2xl duration-300">
-                        <img src="1000525241.jpg" alt="A poster for a 2 years anniversary celebration" class="gallery-image w-full h-auto object-cover">
+                        <img src="1000525241.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1E293B/0891B2?text=Anniversary+Design'" alt="A poster for a 2 years anniversary celebration" class="gallery-image w-full h-auto object-cover">
                     </div>
                     <!-- Image Card 5 -->
                     <div class="gallery-image-wrapper rounded-xl overflow-hidden shadow-lg hover:shadow-2xl duration-300">
-                        <img src="1000738516.jpg" alt="A poster for a Church Program" class="gallery-image w-full h-auto object-cover">
+                        <img src="1000738516.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1E293B/0891B2?text=Flyer+Design'" alt="A poster for a Church Program" class="gallery-image w-full h-auto object-cover">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Form Section -->
-        <section id="contact" class="py-16 bg-gray-800">
+        <section id="contact" class="py-16 bg-secondary">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
-                <p class="text-gray-400 text-lg mb-12">Fill out the form below to get in touch with our team.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-F1F5F9">Contact Us</h2>
+                <p class="text-slate-400 text-lg mb-12">Fill out the form below to get in touch with our team.</p>
 
-                <div class="max-w-xl mx-auto bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-700">
-                    <!-- The form now uses JavaScript to open WhatsApp with a pre-filled message -->
+                <div class="max-w-xl mx-auto bg-primary p-8 rounded-xl shadow-lg border border-tertiary">
                     <form id="contact-form" class="space-y-4">
                         <div>
-                            <label for="name" class="block text-left text-sm font-medium text-gray-300">Name</label>
-                            <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-200 focus:ring-opacity-50 px-3 py-2 bg-gray-800 text-white" required>
+                            <label for="name" class="block text-left text-sm font-medium text-slate-300">Name</label>
+                            <!-- Input background changed to secondary dark, text to light -->
+                            <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-tertiary shadow-sm focus:border-[#0891B2] focus:ring focus:ring-[#0891B2] focus:ring-opacity-50 px-3 py-2 bg-secondary text-F1F5F9" required>
                         </div>
                         <div>
-                            <label for="email" class="block text-left text-sm font-medium text-gray-300">Email Address</label>
-                            <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-200 focus:ring-opacity-50 px-3 py-2 bg-gray-800 text-white" required>
+                            <label for="email" class="block text-left text-sm font-medium text-slate-300">Email Address</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-tertiary shadow-sm focus:border-[#0891B2] focus:ring focus:ring-[#0891B2] focus:ring-opacity-50 px-3 py-2 bg-secondary text-F1F5F9" required>
                         </div>
                         <div>
-                            <label for="message" class="block text-left text-sm font-medium text-gray-300">Message</label>
-                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-teal-500 focus:ring focus:ring-teal-200 focus:ring-opacity-50 px-3 py-2 bg-gray-800 text-white" required></textarea>
+                            <label for="message" class="block text-left text-sm font-medium text-slate-300">Message</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-tertiary shadow-sm focus:border-[#0891B2] focus:ring focus:ring-[#0891B2] focus:ring-opacity-50 px-3 py-2 bg-secondary text-F1F5F9" required></textarea>
                         </div>
-                        <button type="submit" class="cta-button w-full bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-4 rounded-md shadow-lg">Send Message</button>
+                        <button type="submit" class="cta-button w-full font-semibold py-3 px-4 rounded-md shadow-lg">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -331,9 +462,9 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
+    <footer class="bg-primary py-8 border-t border-tertiary">
         <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-500">&copy; 2025 NIEDEN DESIGN. All Rights Reserved.</p>
+            <p class="text-slate-500">&copy; 2025 NIEDEN DESIGN. All Rights Reserved.</p>
         </div>
     </footer>
 
