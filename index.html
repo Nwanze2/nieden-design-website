@@ -12,6 +12,8 @@
     <meta property="og:image" content="https://www.yourwebsite.com/1000478630.jpg">
     <meta property="og:url" content="https://www.yourwebsite.com/">
 
+    <link rel="manifest" href="manifest.json">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -347,11 +349,11 @@
                 <p class="text-slate-400 text-lg mb-12">Hear from those who've experienced our commitment to excellence.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="testimonial-card p-6 rounded-xl shadow-md border">
-                        <p class="text-lg italic text-slate-400 mb-4">"Working with Neiden' s design was an absolute game-changer for my brand. They perfectly understood my vision and brought it to life with creativity, professionalism, and attention to detail. The designs were modern, unique, and truly captured the identity of my business. I couldn’t have asked for a better team!"</p>
+                        <p class="text-lg italic text-slate-400 mb-4">"The service was outstanding from start to finish. It completely exceeded my expectations and made a huge difference to my project."</p>
                         <div class="flex items-center justify-center">
                             <div class="ml-4 text-left">
-                                <p class="font-semibold text-F1F5F9">~Harmony Wellness~</p>
-                                <p class="text-sm text-slate-500"></p>
+                                <p class="font-semibold text-F1F5F9">Jane Doe</p>
+                                <p class="text-sm text-slate-500">CEO, Tech Solutions</p>
                             </div>
                         </div>
                     </div>
@@ -360,7 +362,7 @@
                         <div class="flex items-center justify-center">
                             <div class="ml-4 text-left">
                                 <p class="font-semibold text-F1F5F9">John Smith</p>
-                            <p class="text-sm text-slate-500"></p>
+                            <p class="text-sm text-slate-500">Lead Developer, Innovate Inc.</p>
                             </div>
                         </div>
                     </div>
@@ -369,7 +371,7 @@
                         <div class="flex items-center justify-center">
                             <div class="ml-4 text-left">
                                 <p class="font-semibold text-F1F5F9">Emily White</p>
-                                <p class="text-sm text-slate-500"></p>
+                                <p class="text-sm text-slate-500">Founder, Global Ventures</p>
                             </div>
                         </div>
                     </div>
@@ -403,7 +405,7 @@
                     <div class="gallery-image-wrapper rounded-xl overflow-hidden shadow-lg hover:shadow-2xl duration-300">
                         <img src="1000774082.jpg" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1E293B/0891B2?text=Chicken+Curry+Ad'" alt="Chicken Curry Special Ad" class="gallery-image w-full h-auto object-cover">
                     </div>
-                    </div>
+                </div>
             </div>
         </section>
 
@@ -481,6 +483,19 @@
             // Optional: Clear the form after opening WhatsApp
             this.reset();
         });
+
+        // 2. ADDED: Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
     </script>
 </body>
 </html>
